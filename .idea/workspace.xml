@@ -5,9 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5dd8ab1a-6a7e-4a33-b693-23091e5fcb7e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/handlers/help.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/feeds/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/feeds/bleepingcomputer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/feeds/hackernews.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/feeds/news_engine.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/feeds/parser.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/feeds/securityweek.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/handlers/about.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/handlers/error.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/handlers/news.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/handlers/version.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/bot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/handlers/help.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/handlers/help.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/handlers/start.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/handlers/start.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
