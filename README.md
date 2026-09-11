@@ -349,4 +349,4 @@ If you find ThreatScope useful:
 
 ---
 
-> **ThreatScope — Cybersecurity intelligence, available when you need it.** 🛡️
+> **ThreatScope — Cybersecurity intelligence, available when you need it.** 🕵️‍♂️
