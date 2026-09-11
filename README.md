@@ -1,4 +1,4 @@
-#  🕵️ ThreatScope
+# 🕵️ ThreatScope
 
 > **Cybersecurity Intelligence & Learning Bot for Telegram**
 
@@ -9,6 +9,10 @@ It is built for cybersecurity students, developers, security enthusiasts, and an
 ---
 
 ## ✨ Features
+
+- 🤖 **Telegram Interface**
+  - Simple command-based interface
+  - Access cybersecurity resources directly from Telegram
 
 - 📰 **Cybersecurity News**
   - Fetch the latest cybersecurity news
@@ -31,10 +35,6 @@ It is built for cybersecurity students, developers, security enthusiasts, and an
 
 - 🔖 **Bookmarks**
   - Save useful cybersecurity resources for later
-
-- 🤖 **Telegram Interface**
-  - Simple command-based interface
-  - Access cybersecurity resources directly from Telegram
 
 ---
 
@@ -195,13 +195,7 @@ The bot is started using the included batch launcher:
 ThreatScope.bat
 ```
 
-Simply double-click:
-
-```text
-ThreatScope.bat
-```
-
-to start the ThreatScope bot.
+Simply double-click `ThreatScope.bat` to start the ThreatScope bot.
 
 The launcher starts the Python application and begins Telegram polling.
 
@@ -228,10 +222,10 @@ The current setup is intentionally simple:
 ┌──────────────────────┐
 │    Windows System    │
 │                      │
-│  ThreatScope.bat     │
+│   ThreatScope.bat    │
 │          │           │
 │          ▼           │
-│     Python Bot       │
+│      Python Bot      │
 │          │           │
 │          ▼           │
 │     Telegram API     │
@@ -322,18 +316,17 @@ When reporting an issue, provide:
 
 ## 📜 License
 
-This project is currently provided for educational and development purposes.
+ThreatScope is licensed under the **Apache License 2.0**.
 
-A formal open-source license may be added in the future.
+See the [LICENSE](LICENSE) file for the full license text.
 
 ---
 
 ## 👨‍💻 Author
 
-**SamRepository25**
+**B SIMAK AHMED**
 
-GitHub:  
-https://github.com/SamRepository25
+GitHub: [@SamRepository25](https://github.com/SamRepository25)
 
 ---
 
@@ -349,4 +342,4 @@ If you find ThreatScope useful:
 
 ---
 
-> **ThreatScope — Cybersecurity intelligence, available when you need it.** 🕵️‍♂️
+> **ThreatScope — Cybersecurity intelligence, available when you need it.** 🕵️
