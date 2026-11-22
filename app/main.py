@@ -1,4 +1,5 @@
 from app.bot import create_application
+from app.keep_alive import keep_alive
 from app.utils.logger import setup_logger
 
 
@@ -11,6 +12,7 @@ def main():
 
     logger.info("ThreatScope is running...")
 
+    keep_alive()
     application.run_polling()
 
 
