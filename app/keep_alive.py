@@ -1,20 +1,17 @@
-from app.bot import create_application
-from app.utils.logger import setup_logger
-from app.keep_alive import keep_alive
+import os
+from threading import Thread
+from flask import Flask
 
+app = Flask(__name__)
 
-def main():
-    logger = setup_logger()
+@app.route("/")
+def home():
+    return "Bot is running!"
 
-    logger.info("Starting ThreatScope...")
+def run():
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host="0.0.0.0", port=port)
 
-    application = create_application()
-
-    logger.info("ThreatScope is running...")
-
-    keep_alive()
-    application.run_polling()
-
-
-if __name__ == "__main__":
-    main()
+def keep_alive():
+    t = Thread(target=run, daemon=True)
+    t.start()
