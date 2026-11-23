@@ -1,11 +1,10 @@
-from app.feeds.parser import parse_rss
+from app.feeds.parser import fetch_feed
 
 RSS_URL = "https://feeds.feedburner.com/TheHackersNews"
 
 
-def get_news(limit=5):
-    return parse_rss(
-        RSS_URL,
-        "The Hacker News",
-        limit,
-    )
+def get_hackernews():
+    """
+    Fetch the latest articles from The Hacker News RSS feed.
+    """
+    return fetch_feed(RSS_URL, "The Hacker News")
