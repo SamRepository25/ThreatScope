@@ -5,6 +5,7 @@ from rich.console import Console
 from rich.panel import Panel
 from rich.text import Text
 from rich.align import Align
+from app.keep_alive import keep_alive
 
 import platform
 import sys
@@ -75,6 +76,7 @@ def main():
         show_banner("🟢 ONLINE")
 
         application = create_application()
+        keep_alive()
 
         logger.info("ThreatScope is running...")
 

@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: threatscope-bot
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m app.main
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
