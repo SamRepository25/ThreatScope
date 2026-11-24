@@ -8,6 +8,7 @@ from app.config import BOT_TOKEN
 
 from app.handlers.start import start
 from app.handlers.help import help_command
+from app.handlers.legal import legal_command
 from app.handlers.about import about
 from app.handlers.version import version
 from app.handlers.error import error_handler
@@ -53,6 +54,9 @@ def create_application():
 
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("help", help_command))
+    application.add_handler(CommandHandler("privacy", legal_command))
+    application.add_handler(CommandHandler("terms", legal_command))
+    application.add_handler(CommandHandler("disclaimer", legal_command))
     application.add_handler(CommandHandler("about", about))
     application.add_handler(CommandHandler("version", version))
     application.add_handler(CommandHandler("news", news_command))

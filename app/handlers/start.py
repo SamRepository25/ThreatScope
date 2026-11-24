@@ -1,11 +1,11 @@
-from telegram import Update
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     welcome_message = (
-        "🛡️ <b>Welcome to ThreatScope</b>\n\n"
+        "🕵️ <b>Welcome to ThreatScope</b>\n\n"
         "Your independent cybersecurity intelligence assistant \u2014 aggregating "
         "news, CVEs, and curated tools in one place.\n\n"
         "<b>What you can do:</b>\n\n"
@@ -22,7 +22,14 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "<b>Version:</b> v1.0.0"
     )
 
+    legal_keyboard = InlineKeyboardMarkup([
+        [InlineKeyboardButton("🔒 Privacy Policy", url="https://github.com/SamRepository25/ThreatScope/blob/main/PRIVACY.md")],
+        [InlineKeyboardButton("📜 Terms of Use", url="https://github.com/SamRepository25/ThreatScope/blob/main/TERMS.md")],
+        [InlineKeyboardButton("⚠️ Disclaimer", url="https://github.com/SamRepository25/ThreatScope/blob/main/DISCLAIMER.md")],
+    ])
+
     await update.message.reply_text(
         welcome_message,
         parse_mode="HTML",
+        reply_markup=legal_keyboard,
     )
