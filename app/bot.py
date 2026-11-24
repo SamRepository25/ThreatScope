@@ -27,6 +27,10 @@ from telegram.ext import (
 )
 
 from app.handlers.fallback import unknown_command
+from app.intelligence import (
+    alerts_command, briefing_command, subscribe, threat_command, unsubscribe,
+    intelligence_post_init, intelligence_post_shutdown,
+)
 
 
 def create_application():
@@ -42,6 +46,8 @@ def create_application():
         Application.builder()
         .token(BOT_TOKEN)
         .request(request)
+        .post_init(intelligence_post_init)
+        .post_shutdown(intelligence_post_shutdown)
         .build()
     )
 
@@ -59,6 +65,11 @@ def create_application():
     application.add_handler(CommandHandler("talos", talos_command))
     application.add_handler(CommandHandler("tools", tools_command))
     application.add_handler(CommandHandler("cves", cves_command))
+    application.add_handler(CommandHandler("briefing", briefing_command))
+    application.add_handler(CommandHandler("threat", threat_command))
+    application.add_handler(CommandHandler("alerts", alerts_command))
+    application.add_handler(CommandHandler("subscribe", subscribe))
+    application.add_handler(CommandHandler("unsubscribe", unsubscribe))
     application.add_error_handler(error_handler)
 
     application.add_handler(
