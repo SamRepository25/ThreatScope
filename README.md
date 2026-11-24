@@ -1,4 +1,4 @@
-# 🕵️ ThreatScope[ThreatScope](https://t.me/ThreatScopeIntelBot)
+# 🕵️ [ThreatScope](https://t.me/ThreatScopeIntelBot)
 
 
 > **Cybersecurity Intelligence Assistant for Telegram**
