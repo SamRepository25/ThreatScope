@@ -5,13 +5,16 @@ from telegram.ext import ContextTypes
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     message = (
-        "🛡️ <b>ThreatScope Help</b>\n\n"
+        "🕵️ <b>ThreatScope Help</b>\n\n"
 
         "<b>General</b>\n"
         "/start - Start ThreatScope\n"
         "/help - Show available commands\n"
         "/about - About ThreatScope\n"
-        "/version - Version information\n\n"
+        "/version - Version information\n"
+        "/privacy - Privacy Policy\n"
+        "/terms - Terms of Use\n"
+        "/disclaimer - Disclaimer\n\n"
 
         "<b>Cybersecurity News</b>\n"
         "/news - Latest cybersecurity news\n"
