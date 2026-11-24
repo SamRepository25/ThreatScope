@@ -206,6 +206,12 @@ ThreatScope currently runs as a local process. It is available while the host sy
 
 See [SECURITY.md](SECURITY.md) for vulnerability reporting guidance.
 
+### Legal Documents
+
+- [Privacy Policy](PRIVACY.md)
+- [Terms of Use](TERMS.md)
+- [Disclaimer](DISCLAIMER.md)
+
 ---
 
 ## ⚠️ Limitations
