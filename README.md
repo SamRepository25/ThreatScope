@@ -1,85 +1,105 @@
-# 🕵️ ThreatScope
+# 🛡️ ThreatScope
 
-> **Cybersecurity Intelligence & Learning Bot for Telegram**
+> **Cybersecurity Intelligence Assistant for Telegram**
 
-ThreatScope is a Telegram-based cybersecurity intelligence bot designed to bring **cybersecurity news, vulnerability information, security tools, OSINT resources, cheat sheets, and learning material** into one place.
-
-It is built for cybersecurity students, developers, security enthusiasts, and anyone interested in staying informed about the cybersecurity landscape.
+ThreatScope is a Telegram bot that brings cybersecurity news, vulnerability information, and curated security resources into one convenient interface. It helps security enthusiasts, students, and IT professionals stay informed through updates from security publications and the National Vulnerability Database (NVD).
 
 ---
 
 ## ✨ Features
 
-- 🤖 **Telegram Interface**
-  - Simple command-based interface
-  - Access cybersecurity resources directly from Telegram
-
-- 📰 **Cybersecurity News**
-  - Fetch the latest cybersecurity news
-  - Aggregates information from multiple security sources
-
-- 🔐 **Security Intelligence**
-  - Latest CVE and vulnerability information
-  - Security advisories and important updates
-
-- 🛠️ **Cybersecurity Tools**
-  - Network security tools
-  - OSINT resources
-  - Useful cybersecurity utilities
-
-- 📚 **Learning Resources**
-  - Daily cybersecurity learning
-  - Cheat sheets
-  - Security references
-  - Educational resources
-
-- 🔖 **Bookmarks**
-  - Save useful cybersecurity resources for later
+- 📰 **Aggregated cybersecurity news** — latest articles collected from multiple security publications.
+- 🗞️ **Source-specific feeds** — browse news from individual sources.
+- 🚨 **CVE updates** — view recent CVEs with severity, CVSS score, publication date, description, and link to the NVD entry.
+- 🧰 **Curated security tools** — categorized links for OSINT, network security, web security, malware analysis, password/hash tools, and utilities.
+- ⚡ **Async Telegram bot** — responsive command handling with asynchronous handlers.
+- 🧵 **News caching** — cache support to reduce repeated feed processing.
+- ⏱️ **Rate limiting** — cooldowns for selected commands to help prevent repeated requests.
+- 🪵 **Logging** — application logs for troubleshooting.
+- 🖥️ **Windows launcher** — start the bot using the included `ThreatScope.bat` file.
 
 ---
 
-## 📡 Security News Sources
+## 📰 News Sources
 
-ThreatScope is designed to collect information from reputable cybersecurity sources, including:
+ThreatScope includes source-specific news commands for:
 
-- The Hacker News
-- BleepingComputer
-- CISA
-- SecurityWeek
-- Krebs on Security
-- SANS Internet Storm Center
-- Google Threat Intelligence
-- Microsoft Security Blog
+| Source | Command |
+|---|---|
+| The Hacker News | `/hackernews` |
+| BleepingComputer | `/bleepingcomputer` |
+| SecurityWeek | `/securityweek` |
+| SANS Internet Storm Center | `/sans` |
+| Krebs on Security | `/krebs` |
+| Dark Reading | `/darkreading` |
+| Cisco Talos | `/talos` |
 
-> Source availability may vary depending on feed availability, APIs, website changes, or other technical limitations.
+The aggregated `/news` command collects recent items from configured feeds.
 
 ---
 
-## 🤖 Bot Commands
+## 🚨 Vulnerability Information
+
+The `/cves` command retrieves recent CVE entries from the **National Vulnerability Database (NVD)** and displays information such as:
+
+- CVE identifier
+- Severity and CVSS score, when available
+- Published date
+- Brief description
+- Link to the NVD vulnerability page
+
+ThreatScope is an information aggregator; it does not perform vulnerability scanning or exploit testing.
+
+---
+
+## 🤖 Commands
 
 | Command | Description |
 |---|---|
-| `/start` | Start ThreatScope |
-| `/help` | Display available commands |
-| `/about` | About ThreatScope |
-| `/version` | Display bot version |
-| `/news` | Fetch the latest cybersecurity news |
-
-Additional commands and capabilities may be introduced as the project evolves.
+| `/start` | Start the bot |
+| `/help` | Show available commands |
+| `/about` | Information about ThreatScope |
+| `/version` | Show version information |
+| `/news` | Aggregated cybersecurity news |
+| `/hackernews` | The Hacker News feed |
+| `/bleepingcomputer` | BleepingComputer feed |
+| `/securityweek` | SecurityWeek feed |
+| `/sans` | SANS Internet Storm Center feed |
+| `/krebs` | Krebs on Security feed |
+| `/darkreading` | Dark Reading feed |
+| `/talos` | Cisco Talos feed |
+| `/cves` | Recent CVE information |
+| `/tools` | Curated cybersecurity tools and resources |
 
 ---
 
-## 🏗️ Tech Stack
+## 🧰 Cybersecurity Tools
+
+The `/tools` command provides curated links across categories:
+
+- **OSINT:** Shodan, Censys, VirusTotal, URLScan, WHOIS
+- **Network:** Nmap, Wireshark, Angry IP Scanner
+- **Web security:** Burp Suite, OWASP ZAP
+- **Malware analysis:** ANY.RUN, Hybrid Analysis, Joe Sandbox
+- **Password & hashing:** Hashcat, John the Ripper
+- **Utilities:** CyberChef, ExifTool, YARA
+
+These are external resources. ThreatScope does not run these tools on behalf of users.
+
+---
+
+## 🧱 Technology Stack
 
 | Technology | Purpose |
 |---|---|
-| **Python** | Core programming language |
-| **python-telegram-bot** | Telegram Bot API framework |
-| **HTTPX** | HTTP requests and networking |
-| **RSS / Web Feeds** | Security news aggregation |
-| **python-dotenv** | Environment configuration |
-| **Git / GitHub** | Version control |
-| **Windows Batch** | Local bot launcher |
+| Python | Application logic |
+| python-telegram-bot | Telegram bot framework |
+| HTTPX / Requests | HTTP requests and API access |
+| Feedparser / BeautifulSoup / lxml | Feed and content parsing |
+| Flask | Keep-alive web endpoint |
+| Rich | Terminal startup display |
+| python-dotenv | Environment configuration |
+| Git & GitHub | Version control |
 
 ---
 
@@ -87,35 +107,39 @@ Additional commands and capabilities may be introduced as the project evolves.
 
 ```text
 ThreatScope/
-│
 ├── app/
-│   ├── bot/
-│   │   └── ...
-│   │
-│   ├── handlers/
-│   │   └── ...
-│   │
+│   ├── bot.py
+│   ├── main.py
+│   ├── config.py
+│   ├── keep_alive.py
+│   ├── cache/
 │   ├── feeds/
-│   │   └── ...
-│   │
-│   ├── news_engine/
-│   │   └── ...
-│   │
+│   │   ├── cves.py
+│   │   ├── news_engine.py
+│   │   └── parser.py
+│   ├── handlers/
+│   │   ├── news.py
+│   │   ├── cves.py
+│   │   ├── tools.py
+│   │   └── ... source-specific handlers
 │   └── utils/
-│       └── logger.py
-│
+│       ├── logger.py
+│       └── rate_limiter.py
 ├── .env.example
-├── .gitignore
 ├── requirements.txt
 ├── ThreatScope.bat
 └── README.md
 ```
 
-> The exact project structure may change as ThreatScope develops.
-
 ---
 
-## ⚙️ Installation
+## 🚀 Installation
+
+### Prerequisites
+
+- Python 3.10+ (use a version compatible with the installed dependencies)
+- Git
+- A Telegram bot token from [BotFather](https://t.me/BotFather)
 
 ### 1. Clone the repository
 
@@ -124,21 +148,16 @@ git clone https://github.com/SamRepository25/ThreatScope.git
 cd ThreatScope
 ```
 
-### 2. Create a virtual environment
+### 2. Create and activate a virtual environment
 
-Windows:
+**Windows:**
 
-```bash
+```powershell
 python -m venv .venv
-```
-
-Activate it:
-
-```bash
 .venv\Scripts\activate
 ```
 
-Linux / macOS:
+**Linux/macOS:**
 
 ```bash
 python3 -m venv .venv
@@ -151,195 +170,85 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
----
+### 4. Configure the bot
 
-## 🔑 Configuration
-
-Create a `.env` file locally using `.env.example` as a template.
+Copy `.env.example` to `.env` and add your Telegram bot token. Keep your `.env` file private.
 
 Example:
 
 ```env
-BOT_TOKEN=your_telegram_bot_token_here
+BOT_TOKEN=replace_with_your_bot_token
 ```
 
-Replace the placeholder with your own Telegram bot token.
+---
 
-### 🔒 Keep Your Token Private
+## ▶️ Run ThreatScope
 
-Never commit your real `.env` file to GitHub.
+**Windows:** Launch `ThreatScope.bat` from the project folder.
 
-The following file should remain **local only**:
+Or run the application from the activated environment:
 
-```text
-.env
+```bash
+python -m app.main
 ```
 
-The public repository should contain:
+ThreatScope currently runs as a local process. It is available while the host system is powered on and the bot process is running. It is **not guaranteed to be hosted 24/7**.
 
-```text
-.env.example
+---
+
+## 🔒 Security & Privacy
+
+- Keep bot tokens, API keys, and other credentials out of Git.
+- Use the provided `.env.example` as a configuration template, not for real secrets.
+- ThreatScope aggregates publicly available information and links to external sources.
+- The bot uses in-memory user information for command rate limiting; this is not intended as persistent user profiling.
+- Use linked tools and security resources only on systems you own or are explicitly authorized to assess.
+
+See [SECURITY.md](SECURITY.md) for vulnerability reporting guidance.
+
+---
+
+## ⚠️ Limitations
+
+- News and CVE data depend on third-party feeds and APIs being available.
+- Feed formats, network conditions, and source changes can affect results.
+- CVE entries are informational; always consult the original advisory and vendor guidance before making security decisions.
+- ThreatScope is not a vulnerability scanner, SIEM, or automated incident-response platform.
+- Local hosting means bot availability depends on the host and running process.
+
+---
+
+## 🧪 Tests
+
+The repository includes tests for feed parsing, news aggregation, and CVE processing. Run the test suite from the repository root:
+
+```bash
+python -m pytest
 ```
-
-with placeholder values instead of real credentials.
-
----
-
-## ▶️ Running ThreatScope
-
-ThreatScope currently runs **locally on a Windows system**.
-
-The bot is started using the included batch launcher:
-
-```text
-ThreatScope.bat
-```
-
-Simply double-click `ThreatScope.bat` to start the ThreatScope bot.
-
-The launcher starts the Python application and begins Telegram polling.
-
-### ⚠️ Current Availability
-
-ThreatScope is **not currently running 24/7**.
-
-The bot is available only while:
-
-- The host computer is powered on
-- `ThreatScope.bat` is running
-- The required Python environment is available
-- The required dependencies are installed
-
-Closing the bot process or shutting down the host computer will stop ThreatScope.
-
----
-
-## 🖥️ Local Architecture
-
-The current setup is intentionally simple:
-
-```text
-┌──────────────────────┐
-│    Windows System    │
-│                      │
-│   ThreatScope.bat    │
-│          │           │
-│          ▼           │
-│      Python Bot      │
-│          │           │
-│          ▼           │
-│     Telegram API     │
-└──────────────────────┘
-```
-
-The bot communicates with Telegram using the **Telegram Bot API** while the local Python process is running.
-
----
-
-## 🚀 Future Deployment
-
-ThreatScope may eventually be moved to an always-on hosting environment.
-
-Potential deployment options include:
-
-- Linux VPS
-- Docker
-- Proxmox LXC
-- Render
-- Other persistent server infrastructure
-
-An always-on deployment would allow ThreatScope to operate continuously without requiring manual startup on a personal computer.
-
----
-
-## 🔒 Security
-
-Security is an important consideration of ThreatScope.
-
-### Never Commit Secrets
-
-Do not commit files containing:
-
-- Telegram bot tokens
-- API keys
-- Passwords
-- Private credentials
-- Authentication secrets
-
-Use `.env.example` for public configuration templates.
-
-### Responsible Use
-
-ThreatScope provides cybersecurity information and educational resources.
-
-The project does **not** encourage unauthorized access, exploitation, disruption, or other illegal activity.
-
-Users are responsible for ensuring that their use of cybersecurity tools, information, and resources complies with applicable laws and the rules of the systems they interact with.
-
----
-
-## 🎯 Project Goals
-
-ThreatScope aims to provide a convenient cybersecurity intelligence and learning experience directly through Telegram.
-
-Future development may include:
-
-- 🆕 Expanded CVE intelligence
-- 🚨 Security alerts
-- 🔎 Advanced security search
-- 🌐 Additional intelligence sources
-- 🛠️ More cybersecurity tools
-- 📖 Expanded learning modules
-- 📊 Progress tracking
-- 🔖 Improved resource management
-- ⚡ Improved feed processing and caching
-
----
-
-## 🧪 Development
-
-ThreatScope is an evolving project.
-
-Bug reports, suggestions, improvements, and contributions are welcome.
-
-When reporting an issue, provide:
-
-1. A clear description of the problem
-2. Steps to reproduce it
-3. Relevant error logs
-4. Expected behavior
-5. Actual behavior
-
-> **Never include bot tokens, API keys, passwords, or other secrets in issues or pull requests.**
 
 ---
 
 ## 📜 License
 
-ThreatScope is licensed under the **Apache License 2.0**.
-
-See the [LICENSE](LICENSE) file for the full license text.
+ThreatScope is licensed under the **Apache License 2.0**. See [LICENSE](LICENSE) for details.
 
 ---
 
 ## 👨‍💻 Author
 
-**B SIMAK AHMED**
-
+**B SIMAK AHMED**  
 GitHub: [@SamRepository25](https://github.com/SamRepository25)
 
 ---
 
-## ⭐ Support the Project
+## 🤝 Contributions
 
-If you find ThreatScope useful:
-
-- ⭐ Star the repository
-- 🐛 Report bugs
-- 💡 Suggest improvements
-- 🔧 Contribute to the project
-- 📚 Share useful cybersecurity resources
+Suggestions, bug reports, and contributions are welcome. Please include clear reproduction steps and relevant logs when reporting an issue—and **never include secrets or bot tokens**.
 
 ---
 
-> **ThreatScope — Cybersecurity intelligence, available when you need it.** 🕵️
+<div align="center">
+
+**ThreatScope — Cybersecurity intelligence at your fingertips.** 🛡️
+
+</div>
